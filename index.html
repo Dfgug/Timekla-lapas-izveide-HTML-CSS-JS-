@@ -12,7 +12,7 @@
     <h1></h1>
 </header>
 
-<main>
+<main class="container">
     <article>
         <h2>Jeffrey Epstein</h2>
         <p>
@@ -26,8 +26,18 @@
         </p>
         
     </article>
-    <input type="text" id="input">
-    <button id="button">Enter</button>
+    <div class="search-box">
+        <input type="text" id="input" placeholder="Meklēt tekstā...">
+        <button id="button">Meklēt</button>
+    </div>
+    <h2>Sazinies ar mums</h2>
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Vārds">
+        <input type="email" id="email" placeholder="E-pasts">
+        <textarea id="message" placeholder="Ziņojums"></textarea>
+        <button type="submit">Nosūtīt</button>
+        <p id="error" style="color:red;"></p>
+    </form>
 </main>
 
 <footer>
