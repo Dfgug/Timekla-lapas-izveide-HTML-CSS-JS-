@@ -12,29 +12,73 @@ header {
 }
 
 main {
-    padding: 20px;
     background-color: white;
     min-height: 70vh;
+    padding: 20px;
 }
 
-footer {
-    background-color: #34495e;
-    color: white;
-    text-align: center;
-    padding: 10px;
+.container {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 button {
-    margin-top: 20px;
-    padding: 10px 20px;
+    padding: 10px 18px;
     background-color: #3498db;
     color: white;
     border: none;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 14px;
 }
 
 button:hover {
     background-color: #2980b9;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+.search-box input {
+    flex: 1;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.search-box button {
+    height: 40px;
+    padding: 0 18px;
+    white-space: nowrap;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+form textarea {
+    min-height: 100px;
+}
+
+form button {
+    width: 170px;
 }
 
 mark {
@@ -48,3 +92,9 @@ mark {
     border-radius: 8px;
 }
 
+footer {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
