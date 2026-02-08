@@ -7,7 +7,6 @@ const headerTitle = document.querySelector("header h1");
 
 headerTitle.textContent = "Wikipedia fragments projekts";
 headerTitle.style.color = "yellow";
-headerTitle.style.fontSize = "28px";
 
 const originalText = article.innerHTML;
 
@@ -17,14 +16,14 @@ function highlightWord(word) {
     article.innerHTML = originalText;
 
     if (word.trim() === "") {
-        alert("Ievadiet vārdu meklēšanai");
+        alert("Введите слово для поиска");
     } else {
         const regex = new RegExp(word, "gi");
 
         if (regex.test(originalText)) {
             article.innerHTML = originalText.replace(regex, "<mark>$&</mark>");
         } else {
-            alert("Vārds netika atrasts");
+            alert("Слово не найдено");
         }
     }
 }
@@ -40,10 +39,54 @@ article.addEventListener("dblclick", function () {
 });
 
 
+const form = document.getElementById("contactForm");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const messageInput = document.getElementById("message");
+const error = document.getElementById("error");
+
+
+function validateForm(name, email, message) {
+
+    if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
+        error.style.color = "red";
+        error.textContent = "Visi lauki ir obligāti";
+        return false;
+
+    } else if (!email.includes("@")) {
+        error.style.color = "red";
+        error.textContent = "Nepareizs e-pasts";
+        return false;
+
+    } else if (message.length < 5) {
+        error.style.color = "red";
+        error.textContent = "Ziņojums ir pārāk īss";
+        return false;
+
+    } else {
+        error.style.color = "green";
+        error.textContent = "Ziņojums nosūtīts veiksmīgi!";
+        form.reset();
+        return true;
+    }
+}
+
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    validateForm(
+        nameInput.value,
+        emailInput.value,
+        messageInput.value
+    );
+});
+
 const clearBtn = document.createElement("button");
 clearBtn.textContent = "Notīrīt izcelšanu";
-document.querySelector("main").appendChild(clearBtn);
+clearBtn.classList.add("clear-btn");
 
+document.querySelector(".search-box").appendChild(clearBtn);
 
 clearBtn.addEventListener("click", function () {
     article.innerHTML = originalText;
