@@ -1,0 +1,1 @@
+Tīmekļa lapa JS pamatu apguvei.
