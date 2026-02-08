@@ -11,24 +11,39 @@ headerTitle.style.fontSize = "28px";
 
 const originalText = article.innerHTML;
 
-button.addEventListener("click", function () {
-    const value = input.value.trim();
 
-    if (value === "") return;
+function highlightWord(word) {
 
     article.innerHTML = originalText;
 
-    const regex = new RegExp(value, "gi");
-    article.innerHTML = article.innerHTML.replace(regex, "<mark>$&</mark>");
+    if (word.trim() === "") {
+        alert("Ievadiet vārdu meklēšanai");
+    } else {
+        const regex = new RegExp(word, "gi");
+
+        if (regex.test(originalText)) {
+            article.innerHTML = originalText.replace(regex, "<mark>$&</mark>");
+        } else {
+            alert("Vārds netika atrasts");
+        }
+    }
+}
+
+
+button.addEventListener("click", function () {
+    highlightWord(input.value);
 });
+
 
 article.addEventListener("dblclick", function () {
     article.classList.toggle("reading-mode");
 });
 
+
 const clearBtn = document.createElement("button");
 clearBtn.textContent = "Notīrīt izcelšanu";
 document.querySelector("main").appendChild(clearBtn);
+
 
 clearBtn.addEventListener("click", function () {
     article.innerHTML = originalText;
